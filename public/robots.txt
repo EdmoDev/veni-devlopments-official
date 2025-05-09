@@ -1,0 +1,8 @@
+# robots.txt for Veni Developments
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.venidevelopments.ca/sitemap.xml
+# Replace https://www.venidevelopments.ca with your actual domain if different,
+# or use a dynamic approach if your sitemap URL might change based on environment.

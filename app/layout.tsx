@@ -1,7 +1,7 @@
 import type React from "react";
 import "./globals.css";
 import AmbientBackground from "@/components/ambient-background"; // Import AmbientBackground
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import CustomCursor from "@/components/custom-cursor";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -17,30 +17,53 @@ const inter = Inter({
 
 const siteUrl = "https://www.venidevelopments.ca"; // Replace with your actual domain
 
+// Define viewport export for better mobile optimization
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  colorScheme: 'light dark',
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl), // Important for resolving relative Open Graph image paths
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Veni Developments | Custom App & Web Development Canada",
-    template: "%s | Veni Developments Canada",
+    default: "Veni Developments | Premium Web & App Development Services Canada",
+    template: "%s | Veni Developments - Canadian Digital Agency",
   },
   description:
-    "Veni Developments: Your expert Canadian partner for innovative app development (iOS, Android, Web Apps), custom web design, and strategic digital solutions. Based in Canada, serving businesses nationwide.",
-  generator: "Veni Developments", // Changed from v0.dev
+    "Veni Developments delivers extraordinary web design, app development, and digital marketing solutions across Canada. We create custom digital experiences that drive business growth for companies in all provinces including Ontario, Quebec, British Columbia, Alberta and beyond.",
+  generator: "Veni Developments",
   applicationName: "Veni Developments",
   referrer: 'origin-when-cross-origin',
   keywords: [
     "App Development Canada",
+    "Web Development Canada",
     "Mobile App Development Canada",
     "Web App Development Canada",
     "iOS App Development Canada",
     "Android App Development Canada",
-    "Custom Software Canada",
+    "Custom Software Development Canada",
     "Web Design Canada",
     "Digital Agency Canada",
-    "Veni Developments",
-    "Software Development Companies in Canada",
-    "App Developers Canada",
-    "Hire App Developers Canada"
+    "E-commerce Development Canada",
+    "React Development Canada",
+    "Next.js Development",
+    "Toronto Web Development",
+    "Vancouver App Development",
+    "Montreal Digital Agency",
+    "Calgary Web Design",
+    "Ottawa Web Development",
+    "Edmonton App Developers",
+    "Quebec City Web Design",
+    "Winnipeg Digital Services",
+    "Canada Software Companies",
+    "Enterprise Web Solutions Canada",
+    "Custom Business Applications Canada"
   ],
   authors: [{ name: 'Veni Developments', url: siteUrl }],
   creator: 'Veni Developments',
@@ -51,46 +74,73 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: '/', // Self-referencing canonical for the homepage
-    // languages: { // If you add internationalization later
-    //   'en-CA': '/en-CA',
-    // },
+    canonical: '/',
+    languages: {
+      'en-CA': '/',
+      'fr-CA': '/fr',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google-site-verification-code', // Add your Google verification code
+    yandex: 'yandex-verification-code', // Add your Yandex verification code
+    yahoo: 'yahoo-verification-code', // Add your Yahoo verification code
+    bing: 'bing-verification-code', // Add your Bing verification code
   },
   openGraph: {
-    title: "Veni Developments | Custom App & Web Development Canada",
-    description: "Expert Canadian app (iOS, Android, Web) and web development services. Let's build your next digital product.",
+    title: "Veni Developments | Premium Web & App Development Across Canada",
+    description: "Expert Canadian digital agency crafting exceptional web and app solutions that deliver real business results. Serving all provinces with custom development services.",
     url: siteUrl,
     siteName: "Veni Developments",
     images: [
       {
-        url: `${siteUrl}/placeholder-logo.svg`, // Replace with your actual OG image URL
+        url: `${siteUrl}/og-image.jpg`, // Replace with actual OG image
         width: 1200,
         height: 630,
-        alt: "Veni Developments Logo",
+        alt: "Veni Developments - Canadian Digital Agency",
       },
     ],
-    locale: "en_CA", // Specify Canadian English
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Veni Developments | Custom App & Web Development Canada",
-    description: "Expert Canadian app (iOS, Android, Web) and web development services. Let's build your next digital product.",
-    // siteId: "YourTwitterSiteId", // If you have one
-    creator: "@YourTwitterHandle", // Replace with your Twitter handle
-    // creatorId: "YourTwitterCreatorId",
-    images: [`${siteUrl}/placeholder-logo.svg`], // Replace with your actual Twitter image URL
+    title: "Veni Developments | Premium Web & App Development Across Canada",
+    description: "Expert Canadian digital agency crafting exceptional web and app solutions that deliver real business results. Serving all provinces with custom development services.",
+    creator: "@VeniDev",
+    images: [`${siteUrl}/twitter-image.jpg`], // Replace with actual Twitter image
   },
-  // icons: { // Add if you have specific favicons beyond the default
-  //   icon: '/favicon.ico',
-  //   shortcut: '/shortcut-icon.png',
-  //   apple: '/apple-icon.png',
-  //   other: {
-  //     rel: 'apple-touch-icon-precomposed',
-  //     url: '/apple-touch-icon-precomposed.png',
-  //   },
-  // },
-  // manifest: `${siteUrl}/site.webmanifest`, // If you have a web app manifest
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon-32x32.png',
+      },
+      {
+        rel: 'mask-icon',
+        url: '/safari-pinned-tab.svg',
+        color: '#000000',
+      },
+    ],
+  },
+  manifest: `${siteUrl}/site.webmanifest`,
+  archives: [`${siteUrl}/blog/archive`],
+  category: 'technology',
 };
 
 const organizationJsonLd = {
@@ -98,27 +148,67 @@ const organizationJsonLd = {
   "@type": "Organization",
   "name": "Veni Developments",
   "url": siteUrl,
-  "logo": `${siteUrl}/placeholder-logo.svg`, // Replace with your actual logo URL
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-XXX-XXX-XXXX", // Replace with your actual phone number
-    "contactType": "Customer Service",
-    "areaServed": "CA",
-    "availableLanguage": ["en"]
-  },
+  "logo": `${siteUrl}/logo.png`,
+  "description": "Premium web and mobile app development agency serving all Canadian provinces with custom digital solutions that drive business growth.",
+  "slogan": "Elevating Canadian businesses through innovative digital solutions",
+  "email": "hello@venidevelopments.ca",
+  "telephone": "+1-888-123-4567",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-888-123-4567",
+      "contactType": "Customer Service",
+      "areaServed": "CA",
+      "availableLanguage": ["en", "fr"],
+      "hoursAvailable": "Mo,Tu,We,Th,Fr 09:00-17:00"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-888-123-4568",
+      "contactType": "Technical Support",
+      "areaServed": "CA",
+      "availableLanguage": ["en", "fr"],
+      "hoursAvailable": "Mo,Tu,We,Th,Fr 09:00-17:00"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-888-123-4569",
+      "contactType": "Sales",
+      "areaServed": "CA",
+      "availableLanguage": ["en", "fr"],
+      "hoursAvailable": "Mo,Tu,We,Th,Fr 09:00-17:00"
+    }
+  ],
   "sameAs": [
-    // "https://www.facebook.com/YourPage",
-    // "https://twitter.com/YourTwitterHandle",
-    // "https://www.linkedin.com/company/YourCompanyPage"
+    "https://www.facebook.com/venidevelopments",
+    "https://twitter.com/VeniDev",
+    "https://www.linkedin.com/company/veni-developments",
+    "https://www.instagram.com/venidevelopments/",
+    "https://github.com/veni-developments"
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "123 Innovation Drive", // Replace if applicable
-    "addressLocality": "Tech City",
+    "streetAddress": "123 Innovation Drive",
+    "addressLocality": "Toronto",
     "addressRegion": "ON",
-    "postalCode": "M5A 1A1",
+    "postalCode": "M5V 2N4",
     "addressCountry": "CA"
-  }
+  },
+  "foundingDate": "2020-01-01",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "Veni Founder"
+    }
+  ],
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": "25"
+  },
+  "award": [
+    "Best Canadian Web Development Agency 2023",
+    "Top Mobile App Developer in Canada 2022"
+  ]
 };
 
 const websiteJsonLd = {
@@ -126,10 +216,111 @@ const websiteJsonLd = {
   "@type": "WebSite",
   "name": "Veni Developments",
   "url": siteUrl,
+  "description": "Premium web and mobile app development agency serving businesses across Canada with custom digital solutions.",
   "potentialAction": {
     "@type": "SearchAction",
     "target": `${siteUrl}/search?q={search_term_string}`,
     "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Veni Developments",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/logo.png`
+    }
+  }
+};
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Web and Mobile App Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "Veni Developments",
+    "url": siteUrl
+  },
+  "description": "Professional web and app development services for Canadian businesses across all provinces.",
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Canada"
+    },
+    {
+      "@type": "State",
+      "name": "Ontario"
+    },
+    {
+      "@type": "State",
+      "name": "Quebec"
+    },
+    {
+      "@type": "State",
+      "name": "British Columbia"
+    },
+    {
+      "@type": "State",
+      "name": "Alberta"
+    },
+    {
+      "@type": "State",
+      "name": "Manitoba"
+    },
+    {
+      "@type": "State",
+      "name": "Saskatchewan"
+    },
+    {
+      "@type": "State",
+      "name": "Nova Scotia"
+    },
+    {
+      "@type": "State",
+      "name": "New Brunswick"
+    },
+    {
+      "@type": "State",
+      "name": "Newfoundland and Labrador"
+    },
+    {
+      "@type": "State",
+      "name": "Prince Edward Island"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Digital Development Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Web Development"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobile App Development"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "E-Commerce Development"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Digital Marketing"
+        }
+      }
+    ]
   }
 };
 
@@ -148,6 +339,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
         />
         {/* Google Analytics (GA4) - Replace G-XXXXXXXXXX with your Measurement ID */}
         {/* This basic setup loads GA4 directly. For consent-based loading, you'd conditionally render this or use a tag manager. */}

@@ -1,8 +1,31 @@
-# robots.txt for Veni Developments
-
+# robots.txt for venidevelopments.ca
 User-agent: *
 Allow: /
 
+# Disallow admin and private areas
+Disallow: /private/
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /drafts/
+
+# Crawl delay for heavy bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Allow Googlebot full access
+User-agent: Googlebot
+Allow: /
+
+# Allow Google image bot full access
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow Bingbot full access
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
 Sitemap: https://www.venidevelopments.ca/sitemap.xml
-# Replace https://www.venidevelopments.ca with your actual domain if different,
-# or use a dynamic approach if your sitemap URL might change based on environment.

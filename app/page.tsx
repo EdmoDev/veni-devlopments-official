@@ -1,5 +1,7 @@
 "use client"
 
+// Metadata is handled in layout.tsx for the home page
+
 import { useEffect, useRef } from "react"
 import { ArrowDown, ArrowRight } from "lucide-react"
 import Link from "next/link"
